@@ -1,0 +1,30 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: nuevoCluster
+  region: us-east-1 # eu-west-1
+  version: "1.27" # "1.27"
+iam:
+  serviceRoleARN: "arn:aws:iam::183160003225:role/ROLE_EKS_TEST" # "arn:aws:iam::XXXXXXXXXXX:role/ROLE_EKS_TEST"
+
+  id: vpc-0c862855cae28dd3e # vpc-000000000XXXXXXXX
+  subnets:
+    private:
+      priv-1a: { id: subnet-072bc9ac8398a5aa2 }
+      priv-1b: { id: subnet-021ab3de5b1a3194e }
+      priv-1c: { id: subnet-082e2fc70ca07eba8 }
+
+      back-1a: { id: subnet-019a23102eedf5adb }
+      back-1b: { id: subnet-0934d43d78a99a181 }
+      back-1c: { id: subnet-095b31b2c89703013 }
+    public:
+      eu-west-1a: { id: subnet-0206677adde0b5cfb }
+      eu-west-1b: { id: subnet-0b6f6114649f2a7e4 }
+      eu-west-1c: { id: subnet-09ce558fe54e2e019 }
+
+cloudWatch:
+  clusterLogging:
+    enableTypes:
+      ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+    logRetentionInDays: 7
